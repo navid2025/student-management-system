@@ -29,8 +29,22 @@ public class Manager {
         students.add(student);
     }
 
-    public void addCourse(Course course){
-        courses.add(course);
+    public void addCourse(String courseId, String courseName, String teacherId){
+
+        //find teacher by teacherId
+        Teacher foundTeacher = null;
+        for(Teacher teacher: teachers) {
+            if(teacher.getId().equals(teacherId)){
+                foundTeacher = teacher;
+            }
+        }
+        if(foundTeacher == null) {
+            System.out.println("teacherId dose not exist.");
+            return;
+        }
+        Course newCourse = new Course(courseId, courseName, foundTeacher);
+        foundTeacher.addCourse(newCourse);
+        courses.add(newCourse);
     }
 
     public void addTeacher(Teacher teacher){
@@ -44,7 +58,7 @@ public class Manager {
         }
 
         for(int i =0; i <students.size(); i++){
-            System.out.println(students.get(i));
+            System.out.println(students.get(i).toString());
         }
     }
 
@@ -59,7 +73,7 @@ public class Manager {
         }
     }
 
-    public void studentEnroll(String studentId, String courseId){
+    public void enrollStudent(String studentId, String courseId){
 
         Student student = null;
         for (int i = 0; i< students.size(); i++){

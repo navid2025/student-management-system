@@ -31,4 +31,13 @@ public class Course extends BaseItem {
     public void addStudent(Student student){
         students.add(student);
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseName='" + courseName + '\'' +
+                ", teacher=" + teacher +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }

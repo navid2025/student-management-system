@@ -9,6 +9,9 @@ public class StudentManagementApplication {
         Scanner scanner = new Scanner(System.in);
         Manager studentManager = new Manager();
 
+        String teacherId;
+        String courseId;
+        String studentId;
         while(true){
             System.out.println("***Student and Course Management System***");
             System.out.println("1: Add student");
@@ -20,6 +23,7 @@ public class StudentManagementApplication {
             System.out.println("7: Exit");
             System.out.println("please enter your choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -34,22 +38,37 @@ public class StudentManagementApplication {
                     break;
                 case 2:
                     System.out.println("please Enter teacher id: ");
-                    String teacherId = scanner.nextLine();
+                    teacherId = scanner.nextLine();
                     System.out.println("please enter your name: ");
                     String teacherName = scanner.nextLine();
                     Teacher teacher = new Teacher(teacherId,teacherName);
                     studentManager.addTeacher(teacher);
+                    break;
 
                 case 3:
                     System.out.println("please enter course id: ");
-                    String courseId = scanner.nextLine();
+                    courseId = scanner.nextLine();
 
                     System.out.println("please enter course name: ");
                     String courseName = scanner.nextLine();
 
                     System.out.println("please enter teacher id");
-                    String tId = scanner.nextLine();
-
+                    teacherId = scanner.nextLine();
+                    studentManager.addCourse(courseId, courseName, teacherId);
+                    break;
+                case 4:
+                    System.out.println("please enter student id");
+                    studentId = scanner.nextLine();
+                    System.out.println("please enter course id");
+                    courseId = scanner.nextLine();
+                    studentManager.enrollStudent(studentId,courseId);
+                    break;
+                case 5:
+                    studentManager.showAllStudent();
+                    break;
+                case 6:
+                    studentManager.showAllCourses();
+                    break;
 
             }
 
@@ -57,17 +76,5 @@ public class StudentManagementApplication {
 
 
         }
-
-        //add student
-
-        //add course
-
-        //add teacher
-
-        //enroll for a course
-
-        //view all students
-
-        //view all courses
     }
 }

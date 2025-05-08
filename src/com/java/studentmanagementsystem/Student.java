@@ -1,6 +1,7 @@
 package com.java.studentmanagementsystem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Student extends Person {
@@ -26,5 +27,15 @@ public class Student extends Person {
 
     public List<Course> getCourses() {
         return courses;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name=" + name +
+                ", id=" + id +
+                ", age=" + age +
+                ", courses=" + Arrays.toString(courses.toArray()) +
+                '}';
     }
 }
